@@ -104,5 +104,5 @@ def benchmark_gptq_kernel(m, weight, zeros, scales, idx, x, eora_b, eora_a):
 
 
 benchmark_pytorch_reference(W, x, eora_b, eora_a)
-for i in range(1, 10):
+for i in range(1, 50):
     benchmark_gptq_kernel(i, weight, zeros, scales, idx, x, eora_b, eora_a)
