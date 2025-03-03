@@ -1,8 +1,6 @@
-import numpy as np
 import torch
 import time
 
-from sympy.physics.units import speed
 
 from eora import gptq_gemm_eora, gptq_gemm
 
