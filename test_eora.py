@@ -1,7 +1,8 @@
-import torch
 import time
+
+import torch
 # from eora import fused_concurrent, fused_sequential, cublas_reference, gptq_gemm_eora, gptq_gemm
-from eora import gptq_gemm_eora, gptq_gemm
+from eora import gptq_gemm, gptq_gemm_eora
 
 m = 1
 k = 4096
@@ -13,7 +14,8 @@ use_exllama = True
 
 x = torch.rand((m, k), device='cuda', dtype=torch.float16)
 eora_a = torch.randn((k, r), device='cuda', dtype=torch.float16) / 10.
-eora_b = torch.randn((r, n), device='cuda', dtype=torch.float16) / 10.
+eora_b = torch.randn((n, r), device='cuda', dtype=torch.float16) / 10.
+eora_b = torch.transpose(eora_b, 0, 1)
 
 # gptq data
 gptq_groups = 32
