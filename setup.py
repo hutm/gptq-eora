@@ -1,7 +1,7 @@
+import os
+
 from setuptools import setup
 from torch.utils import cpp_extension
-
-import os
 
 setup(
     name='eora',
@@ -13,7 +13,7 @@ setup(
     packages=['eora'],
     ext_modules=[
         cpp_extension.CUDAExtension(
-            'eora_cuda',
+            'gptqmodel_exllama_eora',
             [
                 "eora/q_gemm.cu",
                 "eora/pybind.cu",
